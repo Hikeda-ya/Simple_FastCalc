@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#CAEE00</color>
+    <color name="colorPrimaryDark">#B30000</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="textdayColor">#EF0000</color>
+    <color name="notextdayColor">#6E6E6E</color>
+
+</resources>

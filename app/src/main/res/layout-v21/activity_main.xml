@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#32FFFFFF"
+    android:backgroundTintMode="add"
+    tools:context=".MainActivity">
+
+    <TimePicker
+        android:id="@+id/timePicker1"
+        style="@style/MyTimePickerWidgetStyle"
+        android:layout_width="0dp"
+        android:layout_height="340dp"
+        android:headerBackground="@color/colorPrimaryDark"
+        android:scaleX="1"
+        android:scaleY="1"
+        android:timePickerMode="clock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fastLasttext"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:inputType="numberDecimal"
+        android:text="@string/fastlast"
+        app:layout_constraintBottom_toTopOf="@+id/textStart"
+        app:layout_constraintStart_toEndOf="@+id/textStart" />
+
+    <ImageButton
+        android:id="@+id/button15"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:background="#00000000"
+        android:onClick="anteriorHora"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/pressed_back"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="@+id/button2" />
+
+    <TextView
+        android:id="@+id/textLast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="@string/last"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintTop_toTopOf="@+id/button5" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/gobuttongreen"
+        android:onClick="go"
+        android:text="@string/go"
+        app:autoSizeTextType="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button9" />
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="95dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:gravity="bottom|right"
+        android:onClick="changeTomorrowColor"
+        android:text="@string/Tomorrow"
+        android:textColor="#979797"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/start"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/timePicker1" />
+
+    <ImageButton
+        android:id="@+id/button2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="345dp"
+        android:background="#00000000"
+        android:onClick="siguienteHora"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/button_onehora"
+        android:text="@string/nxtHalf"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/timePicker1" />
+
+    <ImageButton
+        android:id="@+id/button3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="345dp"
+        android:layout_marginEnd="40dp"
+        android:background="#00000000"
+        android:onClick="siguienteMediahora"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/button_mediahora"
+        android:text="@string/nxtHr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/timePicker1" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
+        android:background="@drawable/centerbuttonred"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/lastfinal"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="45sp"
+        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/button15"
+        app:layout_constraintTop_toBottomOf="@+id/button13" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/specifichourfast"
+        android:onClick="twelveHours"
+        android:text="@string/for12h"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@+id/button7"
+        app:layout_constraintTop_toTopOf="@+id/button7" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/specifichourfast"
+        android:onClick="sixteenHours"
+        android:text="@string/for16h"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@+id/button8"
+        app:layout_constraintTop_toTopOf="@+id/button8" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/specifichourfast"
+        android:onClick="eighteenHours"
+        android:text="@string/for18h"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:onClick="twentyHours"
+        android:text="@string/for20h"
+        android:textAllCaps="false"
+        android:background="@drawable/specifichourfast"
+        app:layout_constraintStart_toStartOf="@+id/button5"
+        app:layout_constraintTop_toTopOf="@+id/button8" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/specifichourfast"
+        android:onClick="twentyfourHours"
+        android:text="@string/for24h"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/button9"
+        app:layout_constraintTop_toTopOf="@+id/button8" />
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/specifichourfast"
+        android:onClick="thirtysixHours"
+        android:text="@string/for36h"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/button11"
+        app:layout_constraintTop_toTopOf="@+id/button8" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/result"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <ImageButton
+        android:id="@+id/button13"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:background="#00000000"
+        android:onClick="anteriorMediahora"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/pressed_back"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintTop_toTopOf="@+id/button3" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/hs"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/button5"
+        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintTop_toTopOf="@+id/button5" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="60dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="144dp"
+        android:clickable="true"
+        android:gravity="right|top"
+        android:onClick="changeTodayColor"
+        android:text="@string/Today"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/datecalendar"
+        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        tools:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="20dp"
+        android:layout_height="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textStart"
+        app:layout_constraintStart_toEndOf="@+id/textStart"
+        app:layout_constraintTop_toTopOf="@+id/textStart"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="177dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:onClick="setClockNow"
+        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="@+id/button15"
+        app:layout_constraintTop_toTopOf="@+id/timePicker1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
