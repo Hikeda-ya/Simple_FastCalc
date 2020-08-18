@@ -13,8 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -23,7 +25,6 @@ public class MainActivity extends AppCompatActivity{
 
     private EditText editTexto;
     private KeyListener keyListener1;                                                               //encapsulo un atributo
-    private Button buttonText;
     private Boolean eshoy = true;
 
 
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity{
         tp.setIs24HourView(true);
 
         editTexto = findViewById(R.id.fastLasttext);
-        buttonText = findViewById(R.id.button5);
+        Button buttonText = findViewById(R.id.button5);
         keyListener1 = editTexto.getKeyListener();                                                  //Guardo el Keylistner del EditText para poder usarlo en otro lado mas adelante
 
         buttonText.setOnClickListener(new View.OnClickListener() {                                  //ejecución del boton de FAST LAST, or Last For
@@ -111,10 +112,6 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-
-    public void setButtontext(View view) {                                                          //ME cambia el nombre del boton para reflejar lo que esta en el EditText invisible, este metodo se puede agregar a un boton, pero no es actualmente usado
-        setButtontextmetod();
-    }
 
     public void setButtontextmetod() {   //no View view metodo usado internamente                   //ME cambia el nombre del boton para reflejar lo que esta en el EditText invisible
         EditText et = findViewById(R.id.fastLasttext);
@@ -225,23 +222,23 @@ public class MainActivity extends AppCompatActivity{
                 cal.add(Calendar.DAY_OF_MONTH, 0);                                                  //nos da una fecha con los dias aumentados en 0
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
-                tv.setText(textendat + sumfast + ":" + minute + "hs"+ "\n\n" + "TODAY" + "\n" + newDate);
+                tv.setText(textendat + sumfast + ":" + minute + "hs" + "\n\n" + "TODAY" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);           /*WIP*/                          //guarda la fecha en un texto invisible textView6, "dd-MM-yyyy hh:mm:ss"
                 tv2.setText(newDate);
-            } else if (sumfast >= 24 && sumfast < 48) {
+            } else if (sumfast < 48) {
                 cal.add(Calendar.DAY_OF_MONTH, 1);                                                  //nos da una fecha con los dias aumentados en 1
                 String newDate = dt.format(cal.getTime());                                              //si es mañana restara 24 hs y dira que es mañana
                 TextView tv = findViewById(R.id.textView3);
                 int sumfasttomorrow = sumfast - 24;
-                tv.setText(textendat + sumfasttomorrow + ":" + minute + "hs"+ "\n\n"  + " TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfasttomorrow + ":" + minute + "hs" + "\n\n" + " TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
-            } else if (sumfast >= 48 && sumfast < 72) {
+            } else if (sumfast < 72) {
                 cal.add(Calendar.DAY_OF_MONTH, 2);                                                  //nos da una fecha con los dias aumentados en 2
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
                 int sumfastaftertomorrow = sumfast - 48;
-                tv.setText(textendat + sumfastaftertomorrow + ":" + minute + "hs"+ "\n\n"  + " the DAY AFTER TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfastaftertomorrow + ":" + minute + "hs" + "\n\n" + " the DAY AFTER TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
             } else {
@@ -249,17 +246,17 @@ public class MainActivity extends AppCompatActivity{
                 String txtset = "you should not fast for that long";
                 tv.setText(txtset);
             }
-        } else if (!eshoy) {
+        } else {
 
             if (sumfast < 24) {
                 //si es hoy dara la fecha de  hoy
                 cal.add(Calendar.DAY_OF_MONTH, 1);                                                  //nos da una fecha con los dias aumentados en 1
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
-                tv.setText(textendat + sumfast + ":" + minute + "hs"+ "\n\n" + "TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfast + ":" + minute + "hs" + "\n\n" + "TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
-            } else if (sumfast >= 24 && sumfast < 48) {
+            } else if (sumfast < 48) {
                 cal.add(Calendar.DAY_OF_MONTH, 2);                                                  //nos da una fecha con los dias aumentados en 2
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
@@ -267,12 +264,12 @@ public class MainActivity extends AppCompatActivity{
                 tv.setText(textendat + sumfasttomorrow + ":" + minute + "hs" + "\n\n" + " the DAY AFTER TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
-            } else if (sumfast >= 48 && sumfast < 72) {
+            } else if (sumfast < 72) {
                 cal.add(Calendar.DAY_OF_MONTH, 3);                                                  //nos da una fecha con los dias aumentados en 3
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
                 int sumfastaftertomorrow = sumfast - 48;
-                tv.setText(textendat + sumfastaftertomorrow + ":" + minute + "hs" + "\n\n"  + " on " + newDate);
+                tv.setText(textendat + sumfastaftertomorrow + ":" + minute + "hs" + "\n\n" + " on " + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
 
@@ -281,9 +278,6 @@ public class MainActivity extends AppCompatActivity{
                 String txtset = "you should not fast for that long";
                 tv.setText(txtset);
             }
-        } else {
-            TextView tv = findViewById(R.id.textView3);
-            tv.setText("internal error");
         }
         openNewActivity();
     }
