@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#32FFFFFF"
+    android:background="@drawable/keto"
     android:backgroundTintMode="add"
     tools:context=".MainActivity">
 
@@ -84,7 +85,9 @@
         android:textColor="#979797"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/textStart"
@@ -263,7 +266,9 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/textView6"

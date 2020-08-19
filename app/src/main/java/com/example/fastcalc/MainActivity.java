@@ -17,11 +17,12 @@ import android.widget.TimePicker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private EditText editTexto;
     private KeyListener keyListener1;                                                               //encapsulo un atributo
@@ -58,7 +59,6 @@ public class MainActivity extends AppCompatActivity{
                 input.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 
 
-
                 editTexto.setOnKeyListener(
                         new View.OnKeyListener() {
                             //si apreta ENTER le modifica el numero, en el caso de que no sean 2 numeros, caso contenido debajo
@@ -68,12 +68,12 @@ public class MainActivity extends AppCompatActivity{
                                     EditText flt = findViewById(R.id.fastLasttext);
                                     String j = flt.getText().toString();
                                     //metodo para setear el texto del boton, nuestro equivalente al EJECUTAR/run/enter
-                                    if(j.equals("")){
+                                    if (j.equals("")) {
                                         flt.setText("-");
                                         setButtontextmetod();
                                         return true;
-                                    }else
-                                    setButtontextmetod();
+                                    } else
+                                        setButtontextmetod();
                                     return true;
                                 }
                                 return false;
@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity{
                 });
 
 
-
             }
         });
     }
@@ -122,12 +121,12 @@ public class MainActivity extends AppCompatActivity{
 
     public void siguienteMediahora(View view) {                                                      //Va a la siguiente media hora
         TimePicker tp = this.findViewById(R.id.timePicker1);
-        if (tp.getHour()==24 && tp.getMinute() < 30){
+        if (tp.getHour() == 24 && tp.getMinute() < 30) {
             tp.setHour(00);
             tp.setMinute(30);
-        }else if (tp.getMinute() < 30) {
+        } else if (tp.getMinute() < 30) {
             tp.setMinute(30);
-        }else {
+        } else {
             int plushour = tp.getHour() + 1;
             tp.setMinute(00);
             tp.setHour(plushour);
@@ -140,10 +139,10 @@ public class MainActivity extends AppCompatActivity{
             tp.setMinute(30);
         } else if (tp.getMinute() <= 30 && tp.getMinute() != 00) {
             tp.setMinute(00);
-        } else if (tp.getMinute() == 00 && (tp.getHour() == 00 || tp.getHour()==24)){
+        } else if (tp.getMinute() == 00 && (tp.getHour() == 00 || tp.getHour() == 24)) {
             tp.setMinute(30);
             tp.setHour(23);
-        }else{
+        } else {
             int minushour = tp.getHour() - 1;
             tp.setMinute(30);
             tp.setHour(minushour);
@@ -203,18 +202,19 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-
     public void go(View view) {
         TimePicker tp = this.findViewById(R.id.timePicker1);
         EditText et = findViewById(R.id.fastLasttext);
         int fastDuration = Integer.parseInt(et.getText().toString());
         int timepickerHour = tp.getHour();
         int minute = tp.getMinute();
+        DecimalFormat df = new DecimalFormat("00");                                             //me genera un string con el int en dos digitos
+        String formatedminute = df.format(minute);
         int sumfast = timepickerHour + fastDuration;
 
         SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal = Calendar.getInstance();
-        String textendat =  "your fast" + "\n" + "should end at " + "\n\n";
+        String textendat = "your fast" + "\n" + "should end at " + "\n\n";
 
         if (eshoy) {
             if (sumfast < 24) {
@@ -222,15 +222,15 @@ public class MainActivity extends AppCompatActivity{
                 cal.add(Calendar.DAY_OF_MONTH, 0);                                                  //nos da una fecha con los dias aumentados en 0
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
-                tv.setText(textendat + sumfast + ":" + minute + "hs" + "\n\n" + "TODAY" + "\n" + newDate);
-                TextView tv2 = findViewById(R.id.textView6);           /*WIP*/                          //guarda la fecha en un texto invisible textView6, "dd-MM-yyyy hh:mm:ss"
+                tv.setText(textendat + sumfast + ":" + formatedminute + "hs" + "\n\n" + "TODAY" + "\n" + newDate);
+                TextView tv2 = findViewById(R.id.textView6);                                           //guarda la fecha en un texto invisible textView6, "dd-MM-yyyy hh:mm:ss"
                 tv2.setText(newDate);
             } else if (sumfast < 48) {
                 cal.add(Calendar.DAY_OF_MONTH, 1);                                                  //nos da una fecha con los dias aumentados en 1
                 String newDate = dt.format(cal.getTime());                                              //si es mañana restara 24 hs y dira que es mañana
                 TextView tv = findViewById(R.id.textView3);
                 int sumfasttomorrow = sumfast - 24;
-                tv.setText(textendat + sumfasttomorrow + ":" + minute + "hs" + "\n\n" + " TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfasttomorrow + ":" + formatedminute + "hs" + "\n\n" + " TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
             } else if (sumfast < 72) {
@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity{
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
                 int sumfastaftertomorrow = sumfast - 48;
-                tv.setText(textendat + sumfastaftertomorrow + ":" + minute + "hs" + "\n\n" + " the DAY AFTER TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfastaftertomorrow + ":" + formatedminute + "hs" + "\n\n" + " the DAY AFTER TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
             } else {
@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity{
                 cal.add(Calendar.DAY_OF_MONTH, 1);                                                  //nos da una fecha con los dias aumentados en 1
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
-                tv.setText(textendat + sumfast + ":" + minute + "hs" + "\n\n" + "TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfast + ":" + formatedminute + "hs" + "\n\n" + "TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
             } else if (sumfast < 48) {
@@ -261,7 +261,7 @@ public class MainActivity extends AppCompatActivity{
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
                 int sumfasttomorrow = sumfast - 24;
-                tv.setText(textendat + sumfasttomorrow + ":" + minute + "hs" + "\n\n" + " the DAY AFTER TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfasttomorrow + ":" + formatedminute + "hs" + "\n\n" + " the DAY AFTER TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
             } else if (sumfast < 72) {
@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity{
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
                 int sumfastaftertomorrow = sumfast - 48;
-                tv.setText(textendat + sumfastaftertomorrow + ":" + minute + "hs" + "\n\n" + " on " + newDate);
+                tv.setText(textendat + sumfastaftertomorrow + ":" + formatedminute + "hs" + "\n\n" + " on " + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
 
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity{
         TextView tv = findViewById(R.id.textView3);
         TextView tv2 = findViewById(R.id.textView6);
         CharSequence tx = tv.getText();
-        CharSequence tx2 = tv2.getText();
+        CharSequence tx2 = tv2.getText(); //coment
         String txt = String.valueOf(tx);
         String txt2 = String.valueOf(tx2);
         Intent intent = new Intent(this, NewActivity.class);
@@ -317,7 +317,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void setClockNow(View view) {
         TimePicker tp = this.findViewById(R.id.timePicker1);
-       // tp.setMinute();
-       // tp.setHour();
+        // tp.setMinute();
+        // tp.setHour();
     }
 }
