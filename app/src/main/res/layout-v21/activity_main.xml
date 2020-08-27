@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#32FFFFFF"
-    android:background="@drawable/keto"
+    android:background="@drawable/backgroundketo"
     android:backgroundTintMode="add"
     tools:context=".MainActivity">
 
@@ -32,7 +32,9 @@
         android:inputType="numberDecimal"
         android:text="@string/fastlast"
         app:layout_constraintBottom_toTopOf="@+id/textStart"
-        app:layout_constraintStart_toEndOf="@+id/textStart" />
+        android:importantForAutofill="no"
+        app:layout_constraintStart_toEndOf="@+id/textStart"
+        tools:ignore="LabelFor" />
 
     <ImageButton
         android:id="@+id/button15"
@@ -43,6 +45,7 @@
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/pressed_back"
         app:layout_constraintEnd_toStartOf="@+id/button2"
+        android:contentDescription="@string/back"
         app:layout_constraintTop_toTopOf="@+id/button2" />
 
     <TextView
@@ -58,22 +61,25 @@
         app:layout_constraintEnd_toStartOf="@+id/button5"
         app:layout_constraintTop_toTopOf="@+id/button5" />
 
+
     <Button
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/gobuttongreen"
+        android:foreground="@android:drawable/ic_media_play"
+        android:foregroundGravity="center|right"
         android:onClick="go"
         android:text="@string/go"
-        app:autoSizeTextType="none"
+        android:textAlignment="center"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button9" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/button9"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView5"
@@ -119,7 +125,8 @@
         app:srcCompat="@drawable/button_onehora"
         android:text="@string/nxtHalf"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/timePicker1" />
+        app:layout_constraintTop_toTopOf="@+id/timePicker1"
+        tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@+id/button3"
@@ -133,7 +140,8 @@
         app:srcCompat="@drawable/button_mediahora"
         android:text="@string/nxtHr"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/timePicker1" />
+        app:layout_constraintTop_toTopOf="@+id/timePicker1"
+        tools:ignore="ContentDescription" />
 
     <Button
         android:id="@+id/button5"
@@ -160,6 +168,7 @@
         android:onClick="twelveHours"
         android:text="@string/for12h"
         android:textAllCaps="false"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/button7"
         app:layout_constraintTop_toTopOf="@+id/button7" />
 
@@ -172,6 +181,7 @@
         android:onClick="sixteenHours"
         android:text="@string/for16h"
         android:textAllCaps="false"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/button8"
         app:layout_constraintTop_toTopOf="@+id/button8" />
 
@@ -184,6 +194,7 @@
         android:onClick="eighteenHours"
         android:text="@string/for18h"
         android:textAllCaps="false"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/button5"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
 
@@ -192,10 +203,11 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:background="@drawable/specifichourfast"
         android:onClick="twentyHours"
         android:text="@string/for20h"
         android:textAllCaps="false"
-        android:background="@drawable/specifichourfast"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/button5"
         app:layout_constraintTop_toTopOf="@+id/button8" />
 
@@ -208,6 +220,7 @@
         android:onClick="twentyfourHours"
         android:text="@string/for24h"
         android:textAllCaps="false"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/button9"
         app:layout_constraintTop_toTopOf="@+id/button8" />
 
@@ -220,6 +233,7 @@
         android:onClick="thirtysixHours"
         android:text="@string/for36h"
         android:textAllCaps="false"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/button11"
         app:layout_constraintTop_toTopOf="@+id/button8" />
 
@@ -243,7 +257,8 @@
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/pressed_back"
         app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        app:layout_constraintTop_toTopOf="@+id/button3"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textView"

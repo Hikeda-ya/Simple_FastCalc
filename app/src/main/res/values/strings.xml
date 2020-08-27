@@ -5,12 +5,12 @@
     <string name="nxtHalf">Next half hour</string>
     <string name="nxtHr">Next Hour</string>
     <string name="last">Last for:</string>
-    <string name="for12h">12\nhs</string>
-    <string name="for16h">16\nhs</string>
-    <string name="for18h">18\nhs</string>
-    <string name="for20h">20\nhs</string>
-    <string name="for24h">24\nhs</string>
-    <string name="for36h">36\nhs</string>
+    <string name="for12h">12</string>
+    <string name="for16h">16</string>
+    <string name="for18h">18</string>
+    <string name="for20h">20</string>
+    <string name="for24h">24</string>
+    <string name="for36h">36</string>
     <string name="lastfinal">16</string>
     <string name="result">Resultado</string>
     <string name="back">-</string>
@@ -37,4 +37,7 @@
     <string name="number">16</string>
     <string name="notext" />
     <string name="booleanKey">false</string>
+    <string name="calendar">Calendar</string>
+    <string name="prebutton">prebutton</string>
+    <string name="postbutton">postbutton</string>
 </resources>

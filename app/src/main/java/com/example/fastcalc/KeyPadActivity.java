@@ -2,6 +2,7 @@
 package com.example.fastcalc;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import static com.example.fastcalc.MainActivity.setKeypad_activated;
 public class KeyPadActivity extends AppCompatActivity {
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +57,7 @@ public class KeyPadActivity extends AppCompatActivity {
         int keypress = 1;
 
         if (actual_int == 00) {
-            int result = keypress;
-            String resultado = Integer.toString(result);
+            String resultado = Integer.toString(keypress);
             redbuttontext.setText(resultado);
         } else {
             int result = actual_int * 10 + keypress;
@@ -74,8 +75,7 @@ public class KeyPadActivity extends AppCompatActivity {
         int keypress = 2;
 
         if (actual_int == 00) {
-            int result = keypress;
-            String resultado = Integer.toString(result);
+            String resultado = Integer.toString(keypress);
             redbuttontext.setText(resultado);
         } else {
             int result = actual_int * 10 + keypress;
@@ -93,8 +93,7 @@ public class KeyPadActivity extends AppCompatActivity {
         int keypress = 3;
 
         if (actual_int == 00) {
-            int result = keypress;
-            String resultado = Integer.toString(result);
+            String resultado = Integer.toString(keypress);
             redbuttontext.setText(resultado);
         } else {
             int result = actual_int * 10 + keypress;
@@ -112,8 +111,7 @@ public class KeyPadActivity extends AppCompatActivity {
         int keypress = 4;
 
         if (actual_int == 00) {
-            int result = keypress;
-            String resultado = Integer.toString(result);
+            String resultado = Integer.toString(keypress);
             redbuttontext.setText(resultado);
         } else {
             int result = actual_int * 10 + keypress;
@@ -131,8 +129,7 @@ public class KeyPadActivity extends AppCompatActivity {
         int keypress = 5;
 
         if (actual_int == 00) {
-            int result = keypress;
-            String resultado = Integer.toString(result);
+            String resultado = Integer.toString(keypress);
             redbuttontext.setText(resultado);
         } else {
             int result = actual_int * 10 + keypress;
@@ -150,8 +147,7 @@ public class KeyPadActivity extends AppCompatActivity {
         int keypress = 6;
 
         if (actual_int == 00) {
-            int result = keypress;
-            String resultado = Integer.toString(result);
+            String resultado = Integer.toString(keypress);
             redbuttontext.setText(resultado);
         } else {
             int result = actual_int * 10 + keypress;
@@ -169,8 +165,7 @@ public class KeyPadActivity extends AppCompatActivity {
         int keypress = 7;
 
         if (actual_int == 00) {
-            int result = keypress;
-            String resultado = Integer.toString(result);
+            String resultado = Integer.toString(keypress);
             redbuttontext.setText(resultado);
         } else {
             int result = actual_int * 10 + keypress;
@@ -188,8 +183,7 @@ public class KeyPadActivity extends AppCompatActivity {
         int keypress = 8;
 
         if (actual_int == 00) {
-            int result = keypress;
-            String resultado = Integer.toString(result);
+            String resultado = Integer.toString(keypress);
             redbuttontext.setText(resultado);
         } else {
             int result = actual_int * 10 + keypress;
@@ -207,8 +201,7 @@ public class KeyPadActivity extends AppCompatActivity {
         int keypress = 9;
 
         if (actual_int == 00) {
-            int result = keypress;
-            String resultado = Integer.toString(result);
+            String resultado = Integer.toString(keypress);
             redbuttontext.setText(resultado);
         } else {
             int result = actual_int * 10 + keypress;
@@ -226,8 +219,7 @@ public class KeyPadActivity extends AppCompatActivity {
         int keypress = 0;
 
         if (actual_int == 00) {
-            int result = keypress;
-            String resultado = Integer.toString(result);
+            String resultado = Integer.toString(keypress);
             redbuttontext.setText(resultado);
         } else {
             int result = actual_int * 10 + keypress;

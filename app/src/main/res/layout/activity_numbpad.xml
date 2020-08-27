@@ -2,14 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginRight="16dp"
-    android:background="@drawable/keto"
-    android:backgroundTint="#32FFFFFF"
-    android:backgroundTintMode="add"
+    android:background="@drawable/backgroundketo"
     app:layout_goneMarginBottom="16dp">
 
     <Button
@@ -19,6 +15,7 @@
         android:onClick="setkey7"
         android:text="@string/key7"
         android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/key7"
         app:layout_constraintHeight_percent="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/key"
@@ -31,6 +28,7 @@
         android:onClick="setkey9"
         android:text="@string/key9"
         android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/key7"
         app:layout_constraintHeight_percent="0.2"
         app:layout_constraintStart_toEndOf="@+id/key2"
         app:layout_constraintTop_toBottomOf="@+id/key5"
@@ -52,6 +50,8 @@
         android:id="@+id/key9"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:onClick="setkey0"
         android:text="@string/key0"
         android:textSize="60sp"
@@ -85,6 +85,18 @@
         app:layout_constraintStart_toEndOf="@+id/key2"
         app:layout_constraintTop_toBottomOf="@+id/key3"
         app:layout_constraintWidth_percent="0.333" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/hs"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/key3"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <Button
         android:id="@+id/key4"
@@ -136,22 +148,36 @@
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:autofillHints=""
-        android:background="@drawable/centerbuttonred"
+        android:background="@drawable/buttonrojo"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:inputType="numberDecimal"
         android:onClick="openOldActivity2"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
         android:text="@string/notext"
         android:textColor="#FFFFFF"
         android:textSize="80sp"
         app:layout_constraintEnd_toStartOf="@+id/view"
         app:layout_constraintHeight_percent="0.2"
         app:layout_constraintStart_toEndOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextViewEdits" />
+
+    <TextView
+        android:id="@+id/textLast2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/last"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/key1"
+        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <ImageView
         android:id="@+id/view2"
@@ -161,7 +187,8 @@
         app:layout_constraintBottom_toTopOf="@+id/key1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.32" />
+        android:contentDescription="@string/prebutton"
+        app:layout_constraintWidth_percent="0.33" />
 
     <ImageView
         android:id="@+id/view"
@@ -172,7 +199,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintWidth_percent="0.32" />
+        android:contentDescription="@string/postbutton"
+        app:layout_constraintWidth_percent="0.33" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

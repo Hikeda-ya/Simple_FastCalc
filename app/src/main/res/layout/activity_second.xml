@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/keto"
+    android:background="@drawable/backgroundketo"
     android:backgroundTint="#32FFFFFF"
     android:backgroundTintMode="add">
 
@@ -26,22 +26,28 @@
         android:id="@+id/button10"
         android:layout_width="0dp"
         android:layout_height="100dp"
+        android:background="@drawable/gobuttongreen"
+        android:foreground="@android:drawable/ic_media_previous"
+        android:foregroundGravity="left|center"
         android:onClick="openOldActivity"
         android:text="@string/OK"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/gobuttongreen" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button14"
-        android:layout_width="193dp"
-        android:layout_height="96dp"
+        android:layout_width="170dp"
+        android:layout_height="168dp"
         android:layout_marginBottom="100dp"
+        android:background="@null"
         android:onClick="AddCalendarEvent"
-        android:text="@string/event"
+        android:contentDescription="@string/calendar"
         app:layout_constraintBottom_toTopOf="@+id/button10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/button_calendar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
