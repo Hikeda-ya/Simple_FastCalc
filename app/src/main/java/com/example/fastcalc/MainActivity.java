@@ -44,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
         if (isKeypad_activated()) {                                                                    //fue activado el ekeypad?
             Bundle extras = getIntent().getExtras();                                                 //trae datos del KeyPadActivity
             String redbuttonstring = extras.getString("textorojo");
-            Button bt = findViewById(R.id.button5);
-            bt.setText(redbuttonstring);
+            TextView et = findViewById(R.id.fastLasttext);
+            et.setText(redbuttonstring);
+            setButtontextmetod();
         }
 
 
