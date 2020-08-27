@@ -1,21 +1,30 @@
 package com.example.fastcalc;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Calendar;
 
+import static com.example.fastcalc.MainActivity.setKeypad_activated;
+
 public class NewActivity extends AppCompatActivity {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        setTitle("SIMPLE FAST CALC");
+
+        setKeypad_activated(false);
+
         Bundle extras = getIntent().getExtras();                                                    //trae datos del otro MainActivity
         String txt = extras.getString("resultado");
         String txt2 = extras.getString("datecalendar");                                        //txt2 es la fecha de newDate, que esta en YYYY/MM/DD
-                                                                                                        //("dd-MM-yyyy hh:mm:ss")
+        //("dd-MM-yyyy hh:mm:ss")
 
         TextView tv2 = findViewById(R.id.textView2);                                     //levanta el valor del TXT
         tv2.setText(txt);

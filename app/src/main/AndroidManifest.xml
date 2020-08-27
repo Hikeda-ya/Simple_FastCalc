@@ -12,7 +12,10 @@
         android:theme="@style/ThemeFull">
         <activity
             android:name=".NewActivity"
-            android:screenOrientation="sensorPortrait"/>
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".KeyPadActivity"
+            android:screenOrientation="sensorPortrait" />
 
         <activity
             android:name=".MainActivity"

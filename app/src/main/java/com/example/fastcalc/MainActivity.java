@@ -1,14 +1,11 @@
 package com.example.fastcalc;
 
-import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.text.method.KeyListener;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,20 +21,33 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static boolean Keypad_activated;
     private EditText editTexto;
-    private KeyListener keyListener1;                                                               //encapsulo un atributo
+    private KeyListener keyListener1;                                                            //encapsulo un atributo
     private Boolean eshoy = true;
+
+    public boolean isKeypad_activated() {
+        return Keypad_activated;
+    }
+
+    public static void setKeypad_activated(boolean keypad_activated) {
+        Keypad_activated = keypad_activated;
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);                                                     // espesifica que el codigo se usa dentro del xml de activity_main
-
-        setTitle("SIMPLE FAST CALC");                                                               //Le da un titulo a la app, se lo agrega por codigo
+        setContentView(R.layout.activity_main);// espesifica que el codigo se usa dentro del xml de activity_main
 
 
-        /* ver si en Land layout el titulo se muestra y si el TimePiker funciona bien, puede ser el setContentView */
+        if (isKeypad_activated()) {                                                                    //fue activado el ekeypad?
+            Bundle extras = getIntent().getExtras();                                                 //trae datos del KeyPadActivity
+            String redbuttonstring = extras.getString("textorojo");
+            Button bt = findViewById(R.id.button5);
+            bt.setText(redbuttonstring);
+        }
+
 
         TimePicker tp = this.findViewById(R.id.timePicker1);
         tp.setIs24HourView(true);
@@ -46,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonText = findViewById(R.id.button5);
         keyListener1 = editTexto.getKeyListener();                                                  //Guardo el Keylistner del EditText para poder usarlo en otro lado mas adelante
 
+        /*
         buttonText.setOnClickListener(new View.OnClickListener() {                                  //ejecución del boton de FAST LAST, or Last For
 
             @Override
@@ -109,6 +120,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        *///onkeylistener
+
+
     }
 
 
@@ -284,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openNewActivity() {                                                                  //va a la otra layout y se lleva consigo el valor de TXT y TXT2 como string, el texto de la fecha y la fecha
         TextView tv = findViewById(R.id.textView3);
-        TextView tv2 = findViewById(R.id.textView6);
+        TextView tv2 = findViewById(R.id.textView6);  //newDate
         CharSequence tx = tv.getText();
         CharSequence tx2 = tv2.getText(); //coment
         String txt = String.valueOf(tx);
@@ -317,7 +331,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void setClockNow(View view) {
         TimePicker tp = this.findViewById(R.id.timePicker1);
-        // tp.setMinute();
-        // tp.setHour();
+        Calendar cale = Calendar.getInstance();
+        View timePickerPart = tp.findViewById(Resources.getSystem().getIdentifier("hours", "id", "android"));
+        timePickerPart.performClick();
+        int integer1 = cale.get(Calendar.HOUR_OF_DAY);
+        int integer2 = cale.get(Calendar.MINUTE);               //timepiker no toma el dato mientras se esta modificando, habria que hacer un "on release" mientras selecciona el timepiker para que cambie el foco a otro lado y aplique este botton
+        tp.setHour(integer1);
+        tp.setMinute(integer2);
+    }
+
+    public void frontAndNumbKey(View view) {
+
+        Intent intent = new Intent(this, KeyPadActivity.class);
+        startActivity(intent);
+
     }
 }
