@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.method.KeyListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,9 +21,26 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
     private static boolean Keypad_activated;
-    private EditText editTexto;
-    private KeyListener keyListener1;                                                            //encapsulo un atributo
+    private static int timepickerhour;
     private Boolean eshoy = true;
+    private static int timepikerminute;
+    private EditText editTexto;                         //encapsulo un atributo
+
+    public static int getTimepickerhour() {
+        return timepickerhour;
+    }
+
+    public static void setTimepickerhour(int timepickerhour) {
+        MainActivity.timepickerhour = timepickerhour;
+    }
+
+    public static int getTimepikerminute() {
+        return timepikerminute;
+    }
+
+    public static void setTimepikerminute(int timepikerminute) {
+        MainActivity.timepikerminute = timepikerminute;
+    }
 
     public boolean isKeypad_activated() {
         return Keypad_activated;
@@ -55,73 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
         editTexto = findViewById(R.id.fastLasttext);
         Button buttonText = findViewById(R.id.button5);
-        keyListener1 = editTexto.getKeyListener();                                                  //Guardo el Keylistner del EditText para poder usarlo en otro lado mas adelante
-
-        /*
-        buttonText.setOnClickListener(new View.OnClickListener() {                                  //ejecución del boton de FAST LAST, or Last For
-
-            @Override
-            public void onClick(final View view) {
-
-                editTexto.setText("");
-                editTexto.setKeyListener(keyListener1);                                             //guardo el metodo de imput del editor de texto para que no me abra el pad numerico, y no el del boton que no tiene
-                editTexto.requestFocus();
-
-                InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                input.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-
-
-                editTexto.setOnKeyListener(
-                        new View.OnKeyListener() {
-                            //si apreta ENTER le modifica el numero, en el caso de que no sean 2 numeros, caso contenido debajo
-                            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
-
-                                if ((keyevent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                                    EditText flt = findViewById(R.id.fastLasttext);
-                                    String j = flt.getText().toString();
-                                    //metodo para setear el texto del boton, nuestro equivalente al EJECUTAR/run/enter
-                                    if (j.equals("")) {
-                                        flt.setText("-");
-                                        setButtontextmetod();
-                                        return true;
-                                    } else
-                                        setButtontextmetod();
-                                    return true;
-                                }
-                                return false;
-                            }
-                        });
-
-                editTexto.addTextChangedListener(new TextWatcher() {                                //te mira el texto que estan escribiendo
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        if (filterLongEnough()) {                                                   //mientras mira el texto, si se escriben 2 caracteres te cierra el teclado y te configura el numer
-                            setButtontextmetod();
-                            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                        }
-
-                    }
-
-                    private boolean filterLongEnough() {                                            //cuenta hasta 2 caracteres
-                        return editTexto.getText().toString().trim().length() >= 2;
-                    }
-
-                });
-
-
-            }
-        });
-        *///onkeylistener
 
 
     }
@@ -216,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
         setButtontextmetod();
     }
 
-
     public void go(View view) {
         TimePicker tp = this.findViewById(R.id.timePicker1);
         EditText et = findViewById(R.id.fastLasttext);
@@ -224,7 +172,8 @@ public class MainActivity extends AppCompatActivity {
         int timepickerHour = tp.getHour();
         int minute = tp.getMinute();
         DecimalFormat df = new DecimalFormat("00");                                             //me genera un string con el int en dos digitos
-        String formatedminute = df.format(minute);
+        String minutes = df.format(minute);
+        int formatedminute = Integer.parseInt(minutes);
         int sumfast = timepickerHour + fastDuration;
 
         SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
@@ -237,25 +186,31 @@ public class MainActivity extends AppCompatActivity {
                 cal.add(Calendar.DAY_OF_MONTH, 0);                                                  //nos da una fecha con los dias aumentados en 0
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
-                tv.setText(textendat + sumfast + ":" + formatedminute + "hs" + "\n\n" + "TODAY" + "\n" + newDate);
+                tv.setText(textendat + sumfast + ":" + minutes + "hs" + "\n\n" + "TODAY" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);                                           //guarda la fecha en un texto invisible textView6, "dd-MM-yyyy hh:mm:ss"
                 tv2.setText(newDate);
+                setTimepickerhour(sumfast);
+                setTimepikerminute(formatedminute);
             } else if (sumfast < 48) {
                 cal.add(Calendar.DAY_OF_MONTH, 1);                                                  //nos da una fecha con los dias aumentados en 1
                 String newDate = dt.format(cal.getTime());                                              //si es mañana restara 24 hs y dira que es mañana
                 TextView tv = findViewById(R.id.textView3);
                 int sumfasttomorrow = sumfast - 24;
-                tv.setText(textendat + sumfasttomorrow + ":" + formatedminute + "hs" + "\n\n" + " TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfasttomorrow + ":" + minutes + "hs" + "\n\n" + " TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
+                setTimepickerhour(sumfasttomorrow);
+                setTimepikerminute(formatedminute);
             } else if (sumfast < 72) {
                 cal.add(Calendar.DAY_OF_MONTH, 2);                                                  //nos da una fecha con los dias aumentados en 2
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
                 int sumfastaftertomorrow = sumfast - 48;
-                tv.setText(textendat + sumfastaftertomorrow + ":" + formatedminute + "hs" + "\n\n" + " the DAY AFTER TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfastaftertomorrow + ":" + minutes + "hs" + "\n\n" + " the DAY AFTER TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
+                setTimepickerhour(sumfastaftertomorrow);
+                setTimepikerminute(formatedminute);
             } else {
                 TextView tv = findViewById(R.id.textView3);
                 String txtset = "you should not fast for that long";
@@ -268,25 +223,31 @@ public class MainActivity extends AppCompatActivity {
                 cal.add(Calendar.DAY_OF_MONTH, 1);                                                  //nos da una fecha con los dias aumentados en 1
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
-                tv.setText(textendat + sumfast + ":" + formatedminute + "hs" + "\n\n" + "TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfast + ":" + minutes + "hs" + "\n\n" + "TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
+                setTimepickerhour(sumfast);
+                setTimepikerminute(formatedminute);
             } else if (sumfast < 48) {
                 cal.add(Calendar.DAY_OF_MONTH, 2);                                                  //nos da una fecha con los dias aumentados en 2
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
                 int sumfasttomorrow = sumfast - 24;
-                tv.setText(textendat + sumfasttomorrow + ":" + formatedminute + "hs" + "\n\n" + " the DAY AFTER TOMORROW" + "\n" + newDate);
+                tv.setText(textendat + sumfasttomorrow + ":" + minutes + "hs" + "\n\n" + " the DAY AFTER TOMORROW" + "\n" + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
+                setTimepickerhour(sumfasttomorrow);
+                setTimepikerminute(formatedminute);
             } else if (sumfast < 72) {
                 cal.add(Calendar.DAY_OF_MONTH, 3);                                                  //nos da una fecha con los dias aumentados en 3
                 String newDate = dt.format(cal.getTime());
                 TextView tv = findViewById(R.id.textView3);
                 int sumfastaftertomorrow = sumfast - 48;
-                tv.setText(textendat + sumfastaftertomorrow + ":" + formatedminute + "hs" + "\n\n" + " on " + newDate);
+                tv.setText(textendat + sumfastaftertomorrow + ":" + minutes + "hs" + "\n\n" + " on " + newDate);
                 TextView tv2 = findViewById(R.id.textView6);
                 tv2.setText(newDate);
+                setTimepickerhour(sumfastaftertomorrow);
+                setTimepikerminute(formatedminute);
 
             } else {
                 TextView tv = findViewById(R.id.textView3);
