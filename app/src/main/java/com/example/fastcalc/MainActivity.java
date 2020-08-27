@@ -1,5 +1,6 @@
 package com.example.fastcalc;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -24,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private static int timepickerhour;
     private Boolean eshoy = true;
     private static int timepikerminute;
-    private EditText editTexto;                         //encapsulo un atributo
 
     public static int getTimepickerhour() {
         return timepickerhour;
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (isKeypad_activated()) {                                                                    //fue activado el ekeypad?
             Bundle extras = getIntent().getExtras();                                                 //trae datos del KeyPadActivity
+            assert extras != null;
             String redbuttonstring = extras.getString("textorojo");
             TextView et = findViewById(R.id.fastLasttext);
             et.setText(redbuttonstring);
@@ -68,9 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
         TimePicker tp = this.findViewById(R.id.timePicker1);
         tp.setIs24HourView(true);
-
-        editTexto = findViewById(R.id.fastLasttext);
-        Button buttonText = findViewById(R.id.button5);
 
 
     }
@@ -129,42 +127,49 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void twelveHours(View view) {
         EditText et = findViewById(R.id.fastLasttext);
         et.setText("12");
         setButtontextmetod();
     }
 
+    @SuppressLint("SetTextI18n")
     public void sixteenHours(View view) {
         EditText et = findViewById(R.id.fastLasttext);
         et.setText("16");
         setButtontextmetod();
     }
 
+    @SuppressLint("SetTextI18n")
     public void eighteenHours(View view) {
         EditText et = findViewById(R.id.fastLasttext);
         et.setText("18");
         setButtontextmetod();
     }
 
+    @SuppressLint("SetTextI18n")
     public void twentyHours(View view) {
         EditText et = findViewById(R.id.fastLasttext);
         et.setText("20");
         setButtontextmetod();
     }
 
+    @SuppressLint("SetTextI18n")
     public void twentyfourHours(View view) {
         EditText et = findViewById(R.id.fastLasttext);
         et.setText("24");
         setButtontextmetod();
     }
 
+    @SuppressLint("SetTextI18n")
     public void thirtysixHours(View view) {
         EditText et = findViewById(R.id.fastLasttext);
         et.setText("36");
         setButtontextmetod();
     }
 
+    @SuppressLint("SetTextI18n")
     public void go(View view) {
         TimePicker tp = this.findViewById(R.id.timePicker1);
         EditText et = findViewById(R.id.fastLasttext);
@@ -176,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         int formatedminute = Integer.parseInt(minutes);
         int sumfast = timepickerHour + fastDuration;
 
-        SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal = Calendar.getInstance();
         String textendat = "your fast" + "\n" + "should end at " + "\n\n";
 

@@ -1,5 +1,6 @@
 package com.example.fastcalc;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Objects;
 
 import static com.example.fastcalc.MainActivity.getTimepickerhour;
 import static com.example.fastcalc.MainActivity.getTimepikerminute;
@@ -27,6 +29,7 @@ public class NewActivity extends AppCompatActivity {
         setKeypad_activated(false);
 
         Bundle extras = getIntent().getExtras();                                                    //trae datos del otro MainActivity
+        assert extras != null;
         String txt = extras.getString("resultado");
         String newDate = extras.getString("datecalendar");
         date = newDate + " " + getTimepickerhour() + ":" + getTimepikerminute();
@@ -45,10 +48,11 @@ public class NewActivity extends AppCompatActivity {
         }
 
 
+    @SuppressLint("SimpleDateFormat")
     public void AddCalendarEvent(View view) throws ParseException {
         //crea un calendar
         Calendar calendarEvent = Calendar.getInstance();
-        calendarEvent.setTime(new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(date));
+        calendarEvent.setTime(Objects.requireNonNull(new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(date)));
         Intent i = new Intent(Intent.ACTION_EDIT);
         i.setType("vnd.android.cursor.item/event");
         i.putExtra("beginTime", calendarEvent.getTimeInMillis());
