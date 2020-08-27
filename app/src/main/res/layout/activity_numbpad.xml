@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginRight="16dp"
+    android:background="@drawable/keto"
+    android:backgroundTint="#32FFFFFF"
+    android:backgroundTintMode="add"
+    app:layout_goneMarginBottom="16dp">
+
+    <Button
+        android:id="@+id/key6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="setkey7"
+        android:text="@string/key7"
+        android:textSize="60sp"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/key"
+        app:layout_constraintWidth_percent="0.333" />
+
+    <Button
+        android:id="@+id/key8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="setkey9"
+        android:text="@string/key9"
+        android:textSize="60sp"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toEndOf="@+id/key2"
+        app:layout_constraintTop_toBottomOf="@+id/key5"
+        app:layout_constraintWidth_percent="0.333" />
+
+    <Button
+        android:id="@+id/key7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="setkey8"
+        android:text="@string/key8"
+        android:textSize="60sp"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toEndOf="@+id/key1"
+        app:layout_constraintTop_toBottomOf="@+id/key4"
+        app:layout_constraintWidth_percent="0.333" />
+
+    <Button
+        android:id="@+id/key9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="setkey0"
+        android:text="@string/key0"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/key7" />
+
+    <Button
+        android:id="@+id/key"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="setkey4"
+        android:text="@string/key4"
+        android:textSize="60sp"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/key1"
+        app:layout_constraintWidth_percent="0.333" />
+
+    <Button
+        android:id="@+id/key5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="setkey6"
+        android:text="@string/key6"
+        android:textSize="60sp"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toEndOf="@+id/key2"
+        app:layout_constraintTop_toBottomOf="@+id/key3"
+        app:layout_constraintWidth_percent="0.333" />
+
+    <Button
+        android:id="@+id/key4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="setkey5"
+        android:text="@string/key5"
+        android:textSize="60sp"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toEndOf="@+id/key1"
+        app:layout_constraintTop_toBottomOf="@+id/key2"
+        app:layout_constraintWidth_percent="0.333" />
+
+    <Button
+        android:id="@+id/key1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="setkey1"
+        android:text="@string/key1"
+        android:textSize="60sp"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintWidth_percent="0.333" />
+
+    <Button
+        android:id="@+id/key2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="setkey2"
+        android:text="@string/key2"
+        android:textSize="60sp"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toEndOf="@+id/key1"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintWidth_percent="0.333" />
+
+    <Button
+        android:id="@+id/key3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="setkey3"
+        android:text="@string/key3"
+        android:textSize="60sp"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toEndOf="@+id/key2"
+        app:layout_constraintTop_toTopOf="@+id/key2"
+        app:layout_constraintWidth_percent="0.333" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autofillHints=""
+        android:background="@drawable/centerbuttonred"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:onClick="openOldActivity2"
+        android:scaleType="fitCenter"
+        android:text="@string/notext"
+        android:textColor="#FFFFFF"
+        android:textSize="80sp"
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toEndOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/key1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.32" />
+
+    <ImageView
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/key1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_percent="0.32" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
